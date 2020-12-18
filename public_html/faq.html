@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>DangerCoin</title>
+	<meta name="description" content="Описание страницы" />
+	<meta name="keywords" content="Ключевые слова" />
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+	</head>
+<body>
+	<div id="page">
+	<header>
+		<a href="/" title="" class="logo"><img src="images/logo.png" alt="DNGR" /></a>
+		<div class="phone">DangerCoin</div>
+		
+		<nav>
+			<ul id="top_menu">
+				<li><a href="index.html">DNGR</a></li>
+				<li><a href="http://explorer.dangercoin.org/">Explorer</a></li>
+				<li><a href="http://github.com/dngrcoin/dngrcoin/">GITHUB</a></li>
+				<li><a href="roadmap.html">Roadmap</a></li>
+				<li><a href="whitepaper.html">White paper</a></li>
+				<li><a href="faq.html">FAQ</a></li>
+           <li><a href="download.html">Download</a></li>
+				<li><a href="http://tradebot.cf/">DangerBot</a></li>
+           <li><a href="paperwallet/paper.html">PaperWallet</a></li>
+			</ul>
+		</nav>
+		
+		<div class="header_img">
+		<img src="images/header_img.jpg" alt="Туристическое агентство" />
+		</div>
+	</header>
+
+	<section id="content">
+   <h1></h1>
+   <h1></h1>
+  <h1>Основные моменты работы с приложениями.</h1>
+    <h1></h1>
+      <h1>dngrcoin-qt</h1>
+<p>При первом запуске графический кошелек "dngrcoin-qt" создаёт свою рабочую папку, файл кошелька "wallet.dat", "dngrcoin.conf" и блокчейн.</p>
+ <p>  Отправка монет, просмотр баланса и т.д. интуитивно понятны.</p>
+<p>Команда для запуска графического кошелька в linux </p>
+		<p>./dngrcoin-qt</p>
+ <p> Если вы хотите запустить майнинг на процессоре в графическом кошельке нужно в нем же зайти </p>
+<p>на вкладку "инструменты" ("Tools"), выбрать "консоль отладки" ("Debug console") и ввести команду:</p>
+ <p> setgenerate true </p>
+<p> для остановки майнинга:</p>
+<p> setgenerate false</p>
+<p> Но, в связи с тем, что в настоящее время сложность майнинга увеличилась, кошельком врядли получится что-либо намайнить</p>
+		<p> Ниже есть инструкция по майнингу сторонними программами-майнерами</p>
+		<p></p>
+  <h1></h1>
+ <h1>dngrcoind</h1>
+<p>Для упрощенной автоустановки можно использовать скрипт DNGRinstall.sh </p>
+<p>wget https://raw.githubusercontent.com/dngrcoin/dngrcoin/master/DNGRinstall.sh</p>
+<p>bash DNGRinstall.sh</p>
+		<p>после установки проверьте доступность порта 49002 для dngrcoind и порта 22 для SSH-соединений</p>
+		<p>Установка вручную: для работы консольного кошелька необходимо установить библиотеки. Это можно сделать одной общей командой в терминале:</p>
+<p>  sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install software-properties-common  build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev -y && sudo apt-get update -y && sudo add-apt-repository ppa:bitcoin/bitcoin && sudo apt-get update -y && sudo apt-get install libdb4.8-dev libdb4.8++-dev libminiupnpc-dev libzmq3-dev libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler libqrencode-dev mc -y
+</p>
+
+<h1></h1>
+<p></p>
+<p>Затем скачиваем приложения:</p>
+<p>wget https://github.com/dngrcoin/dngrcoin/releases/download/v1.7.4/dngrcoind-64bit-ubuntu16.tar.gz</p>
+<p>Распаковываем:</p>
+<p>tar -xvzf dngrcoind-64bit-ubuntu16.tar.gz</p>
+<p>Удаляем уже ненужный архив:</p>
+<p>rm -rf dngrcoind-64bit-ubuntu16.tar.gz</p>
+<p>Запускаем:</p>
+<p>./dngrcoind -daemon</p>
+<p>Проверяем количество синхронизированных блоков:</p>
+<p>./dngrcoin-cli getinfo</p>
+<p>Останавливаем:</p>
+<p>./dngrcoin-cli stop</p>
+<p>Редактируем автоматически созданный конфигурационный файл dngrcoin.conf</p>
+<p>nano ~/.dngrcoin/dngrcoin.conf</p>
+
+		<p>Установка приложения на ubuntu-18 аналогична </p>
+<h1></h1>
+
+<p>При первом запуске консольного daemon кошелька "dngrcoind" также создаётся  рабочая папка, файл кошелька "wallet.dat", "dngrcoin.conf" и блокчейн</p>
+		<p>После первого запуска нужно в файл dngrcoin.conf добавить пользователя для ввода команд:  </p>
+<p>rpcuser=lyuboeznachenie</p>
+<p>rpcpassword=tojelyuboeznachenie</p>
+
+<p>Для запуска консольного приложения вводим команду:</p>
+		<p>./dngrcoind -daemon</p>
+<p>После этого кошелек запустится и начнет работать в режиме демона</p>
+		<p>Затем для управления кошельком вводим команды для "dngrcoin-cli"</p>
+<p>./dngrcoin-cli stop                                -   выключение  кошелька</p>
+<p>./dngrcoin-cli getinfo                         - общая инормация</p>
+<p>./dngrcoin-cli getwalletinfo              - информация о кошельке</p>
+<p>./dngrcoin-cli getmininginfo            - состояние майнинга</p>
+<p>./dngrcoin-cli   getpeerinfo              - информация о соединениях с другими кошельками (нодами)</p>
+<p>./dngrcoin-cli setgenerate true    - запуск майнинга на процессоре</p>
+<p>./dngrcoin-cli setgenerate false     - остановка майнинга</p>
+<p>./dngrcoin-cli help   - список команд</p>
+<p>./dngrcoin-cli sendtoaddress dJvL1pxyeXphvucqhwnAVKtdiMHmh9Y5j7 15      -  команда перевода 15 монет указанному адресу DNGR </p>
+<p>./dngrcoin-cli instantsendtoaddress dJvL1pxyeXphvucqhwnAVKtdiMHmh9Y5j7 15      -  команда моментального перевода 15 монет указанному адресу DNGR (максимум 999 монет) </p>
+<p>./dngrcoin-cli listaddressgroupings  -  выводит список адресов вашего кошелька с доступными балансами  </p>
+<p>Для работы кошелек использует порт:</p>
+		<p>49002    - основная сеть(mainnet)</p>
+		<p></p>
+<p></p>
+		<p></p>
+ <p>Вот здесь более поддробно расписана работа с кошельками, вместо "bitcoin" использовать    "dngrcoin"    https://webhamster.ru/mytetrashare/index/mtb0/1548772603evvc8qldqp</p>
+		<p></p>
+
+<p>Если хотите скомпилировать кошельки из исходников, то скачиваете исходники и вводите команды:</p>
+		<p></p>
+      <p>./autogen.sh</p>
+	  <p> ./configure</p>
+	  <p> make</p>
+      <p> make install</p>
+		<p></p>
+<h1></h1>
+
+		<h1>Инструкция по установке и настройке мастерноды</h1>
+		<p>Для настройки мастерноды нужен постоянно работающий кошелек (консольный или графический) на виртуальном сервере (или комп) со статическим IP. Можно всё настроить на одном кошельке, а можно по классике на двух- на сервере кошелёк с мастернодой, на домашнем кошелёк с залогом в 5000 монет, чтобы монетки были под контролем</p>
+		
+		<p>Настраиваем мастерноду на VPS + локально</p>
+<p>НА VPS НАСТРАИВАЕМ ГОРЯЧИЙ КОШЕЛЕК</p>
+<p>ЛОКАЛЬНО НАСТРАИВАЕМ ХОЛОДНЫЙ КОШЕЛЕК</p>
+
+		<p>Краткая и достаточная инструкция.</p>
+		<p>Настройка masternode:
+<p>в локальном холодном кошельке:</p>
+<p>вводим команду getaccountaddress MN1</p>
+<p>Получаем новый адрес, например  dJvL1pxyeXphvucqhwnAVKtdiMHmh9Y5j7</p>
+<p>Переводим на него 5000 dngr, дожидаемся 15 подтверждений для мастерноды</p>
+<p>Затем команда masternode genkey</p>
+<p>получаем мастернодепривкей, например:</p>
+<p>3gp9CbNXPTQeQfY4cvZFUjPAzRKRZeq382nsSrM9dCkAyD4Pt3j</p>
+<p>Затем команда</p>
+<p>masternode outputs </p>
+<p>получаем, например "44836fd4b2c74737ba250ae1b07fa3e83ffb987f1ab95e3fdedaeb8d8d144c20": "1"</p>
+
+<p>Вписываем полученные значения в файл</p>
+<p>masternode.conf:</p>
+<p>MN1 125.125.125.125:49002 3gp9CbNXPTQeQfY4cvZFUjPAzRKRZeq382nsSrM9dCkAyD4Pt3j 44836fd4b2c74737ba250ae1b07fa3e83ffb987f1ab95e3fdedaeb8d8d144c20 1</p>
+<p>где вместо 125.125.125.125  используем свой публичный ip адрес VPS</p>
+<p>На VPS горячем:</p>
+<p>редактируем (добавляем полученный выше мастернодепривкей) файл dngrcoin.conf:</p>
+<p>rpcuser= lyuboeznachenie</p>
+<p>rpcpassword=tojelyuboeznachenie</p>
+<p>rpcallowip=127.0.0.1</p>
+<p>listen=1</p>
+<p>server=1</p>
+<p>daemon=1</p>
+<p>masternode=1</p>
+<p>externalip=125.125.125.125</p>
+<p>masternodeprivkey=3gp9CbNXPTQeQfY4cvZFUjPAzRKRZeq382nsSrM9dCkAyD4Pt3j</p>
+
+<p>После внесения изменений в masternode.conf и dngrcoin.conf кошельки надо перезагрузить</p>
+
+<p>Затем на локальном:</p>
+<p>запустить мастерноду</p>
+<p>./dngrcoin-cli masternode start-all</p>
+<p>или</p>
+<p>./dngrcoin-cli masternode start-alias MN1</p>
+<p>На VPS проверить:</p>
+<p>./dngrcoin-cli masternode status</p>
+		
+		<h1>Инструкция для майнинга</h1>
+		
+		<p>Для запуска соломайнинга у себя на компе программами-майнерами нужно:</p>
+<p>1. Установить приложение dngrcoin</p>
+<p>2. Установить программу-майнер (например ccminer, sgminer или любой другой майнер, поддерживающий алгоритм lyra2z, и подходящий на ваш комп, видеокарту).</p>
+<p>3. Запустить майнер, прописав в конфиге (в bat-файле, если windows, или в команде запуска на linux):</p>
+<p> -a lyra2z -o http://127.0.0.1:49003 -u rpcuser -p rpcpassword --coinbase-addr=dUVkvXrq8bBhfuFeCuiB84E7bTMVEExQoY</p>
+<p> где rpcuser и rpcpassword  берем из dngrcoin.conf, а в --coinbase-addr= указываем адрес, на который хотим получать монеты.</p>
+
+<p>Для запуска соломайнинга используя свою мастерноду на VPS программами-майнерами нужно:</p>
+<p>1. Установить программу-майнер (например ccminer, sgminer или любой другой майнер, поддерживающий алгоритм lyra2z, и подходящий на ваш комп, видеокарту). </p>
+<p>2. Запустить майнер, прописав в конфиге (в bat-файле, если windows, или в команде запуска на linux):</p>
+<p> -a lyra2z -o http://125.125.125.125:49003 -u rpcuser -p rpcpassword --coinbase-addr=dUVkvXrq8bBhfuFeCuiB84E7bTMVEExQoY</p>
+<p> где 125.125.125.125 ip вашей мастерноды, rpcuser и rpcpassword такие же, как и в dngrcoin.conf на VPS, а адрес тот, куда хотим получать награду. </p>
+	<p>В dngrcoin.conf на VPS нужно добавить разрешение подключаться к ней извне строкой rpcallowip= и указав ip вашего майнера, и нужно открыть на VPS порт 49003.</p>
+
+<p>Для запуска майнинга на майнинг-пулах нужно:</p>
+<p>1. Установить программу-майнер (например ccminer, sgminer или любой другой майнер, поддерживающий алгоритм lyra2z, и подходящий на ваш комп, видеокарту)</p> 
+<p>2. Запустить майнер, прописав в конфиге (в bat-файле, если windows, или в команде запуска на linux):</p>
+<p> -a lyra2z -o stratum+tcp://pool.dangercoin.org:4553 -u dQxWmf4ceTVKQ7Abtpi1Wok1zs6nhopPkf -p c=DNGR</p>
+<p> где pool.dangercoin.org это адрес пула (можно выбирать любой пул на свое усмотрение), -u dQxWmf4ceTVKQ7Abtpi1Wok1zs6nhopPk это user-адрес, куда будете получать награду, </p>
+	<p>-p c=DNGR это пароль, указывающий майнить DNGR.</p>
+
+
+
+
+
+	</section>
+	
+	<footer>
+	<a href="http://dngrcoin.cf/" title="DangerCoin">DNGR</a><br />
+	</footer>
+	</div>
+</body>
+</html>

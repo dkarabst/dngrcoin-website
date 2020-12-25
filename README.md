@@ -1,4 +1,5 @@
 # dngrcoin-website
+simple website http://3.128.107.229
 
 Easy installation on VPS:
 
